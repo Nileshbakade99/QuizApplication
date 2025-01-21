@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  th:replace="~{admin/base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<h1 style="color: rgb(128, 128, 255); text-align: center">Create Question For
+			Quiz</h1>
+		<div class="row d-flex justify-content-center">
+			<div class="card"
+				style="width: 20rem; margin-left: 6rem; margin-top: 3rem">
+				<div class="card-body">
+					<h5 class="card-title">Create Quiz Questions</h5>
+					<p class="card-text">
+					  Java, SQL, UI MCQ
+					</p>
+					<a href="/admin/AddQues" class="card-link">Click Here</a>
+				</div>
+			</div>
+			<div class="card"
+				style="width: 20rem; margin-left: 6rem; margin-top: 3rem">
+				<div class="card-body">
+					<h5 class="card-title">Create Quiz Questions</h5>
+					<p class="card-text">
+					  Java Program, SQL Syntax, UI Tags
+					</p>
+					<a href="/admin/AddProgramsQues" class="card-link">Click Here</a>
+				</div>
+			</div>
+		</div>
+		<br><br><br><br><br><br><br><br><br> &nbsp;
+	</section>
+</body>
+</html>

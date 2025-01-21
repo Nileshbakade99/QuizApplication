@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{admin/base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+</style>
+</head>
+<body>
+	<section>
+	<h3 class="mt-4 text-center">Quiz Questions</h3>
+	<br>
+		<div class="container-fluid">
+			<form action="/admin/page/1" method="GET">
+				<div class="text-center">
+				   <input type="radio" id="java" name="catagory" value="Java" th:checked="${catagory == 'Java'}"> Java 
+				&nbsp;&nbsp;<input type="radio" id="sql" name="catagory" value="SQL" th:checked="${catagory == 'SQL'}"> SQL 
+				&nbsp;&nbsp;<input type="radio" id="ui" name="catagory" value="UI" th:checked="${catagory == 'UI'}"> UI 
+				&nbsp;&nbsp;<input type="radio" id="javaprogram" name="catagory" value="JavaProgram" th:checked="${catagory == 'JavaProgram'}"> Java Program
+				&nbsp;&nbsp;<input type="radio" id="sqlsyntax" name="catagory" value="SQLSyntax" th:checked="${catagory == 'SQLSyntax'}"> SQL Syntax
+				&nbsp;&nbsp;<input type="radio" id="uisyntax" name="catagory" value="UISyntax" th:checked="${catagory == 'UISyntax'}"> UI Syntax
+				&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit">Filter</button>
+				</div>
+			</form>
+			&nbsp;
+			<div th:if="${msg}">
+				<p class="text-center text-success" th:text="${msg}"></p>
+			</div>
+			<table class="table table-bordered text-center">
+				<thead>
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">Title</th>
+						<th scope="col">Options</th>
+						<th scope="col">Correct Answer</th>
+						<th scope="col">Category</th>
+						<th scope="col">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="question, op : ${javaQuestion}">
+						<td th:text="${op.index + (currentPage - 1) * 4 + 1}"></td>
+						<td th:text="${question.title}"></td>
+						<td th:text="${question.options}"></td>
+						<td th:text="${question.correctAnswer}"></td>
+						<td th:text="${question.catagory}"></td>
+						<td><a th:href="@{/admin/edit/{id}(id=${question.id})}">Edit</a>
+							<a th:href="@{/admin/delete/{id}(id=${question.id})}">Delete</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div th:if="${totalPages > 1}">
+				<div>
+					Total Rows: <span th:text="${totalItems}"></span>
+				</div>
+				<div class="d-flex justify-content-center">
+					<!-- Previous Page Link -->
+					<span th:if="${currentPage > 1}"> <a
+						th:href="@{/admin/page/{pageno}(pageno=${currentPage - 1}, catagory=${param.catagory})}">Previous</a>
+					</span> &nbsp;&nbsp;&nbsp;
+					<!-- Next Page Link -->
+					<span th:if="${currentPage < totalPages}"> <a
+						th:href="@{/admin/page/{pageno}(pageno=${currentPage + 1}, catagory=${param.catagory})}">Next</a>
+					</span>
+				</div>
+			</div>
+		</div>
+		<br>
+	</section>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

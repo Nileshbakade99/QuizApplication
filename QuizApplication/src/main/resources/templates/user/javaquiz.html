@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{user/base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+</style>
+</head>
+<body>
+	<section>
+		<p>
+			<!-- 			Time Remaining: <span id="time">00:00</span>
+ -->
+		</p>
+		<form id="quizForm" th:action="@{/user/javaquiz}"
+			th:object="${question}" method="post">
+			<div th:each="question, op : ${op}" class="mb- 2 mt-2">
+				<fieldset class="border p-3 rounded">
+					<legend class="fw-bold fs-5">
+						<span th:text="${op.index + 1}"></span> <span
+							th:text="${question.title}"></span>
+					</legend>
+					<br>
+					<div th:each="option : ${question.options}" class="form-check">
+						<input type="radio" th:name="'Answer' + ${op.index}"
+							th:value="${option}" class="form-check-input"> <label
+							th:text="${option}" class="form-check-label"></label>
+					</div>
+				</fieldset>
+			</div>
+			<div class="d-flex justify-content-center mt-2">
+				<button type="submit" id="submitButton"
+					class="btn btn-dark opacity-75">Submit Quiz</button>
+			</div>
+		</form>
+		<br>
+		<!-- <script>
+			var time = 1200; // Timer set for 5 seconds (you can change it)
+
+			// Function to start the countdown and auto-submit the form
+			function autoSubmit() {
+				var timerDisplay = document.getElementById("time");
+
+				var countdown = setInterval(function() {
+					var minutes = Math.floor(time / 60);
+					var seconds = time % 60;
+
+					// Format the time as MM:SS
+					timerDisplay.textContent = (minutes < 10 ? "0" : "")
+							+ minutes + ":" + (seconds < 10 ? "0" : "")
+							+ seconds;
+
+					time--;
+
+					// When time is up, submit the form and clear the interval
+					if (time < 0) {
+						clearInterval(countdown); // Stop the countdown
+						document.getElementById("quizForm").submit(); // Submit the form
+					}
+				}, 1000); // Update every second
+			}
+
+			// Start the timer when the page loads
+			window.onload = autoSubmit;
+		</script> -->
+	</section>
+</body>
+</html>

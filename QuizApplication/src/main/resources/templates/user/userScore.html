@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{user/base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container-fluid">
+			<h1 style="color: rgb(128, 128, 255); text-align: center">User Score</h1>
+			<br>
+			<div th:if="${del}" class="text-center">
+			   <span class="text-success" th:text="${del}"></span>
+			</div>
+			<form action="/user/userScore" method="get">
+			   <input type="radio" id="java" name="catagory" value="Java" th:checked="${catagory==Java}">Java 
+			   <input type="radio" id="sql" name="catagory" value="SQL" th:checked="${catagory==SQL}">SQL
+			   <input type="radio" id="ui" name="catagory" value="UI" th:checked="${catagory==UI}">UI
+			   <button type="submit" class="btn btn-dark opacity-75">Filter</button>
+			</form> 
+			<br>
+			<br>
+			<table class="table table-bordered text-center">
+			   <thead>
+			      <tr>
+			        <th>Index</th>
+			        <th>Score</th>
+			        <th>Category</th>
+			        <th>Date And Time</th>
+			        <th>Action</th>
+			      </tr>
+			   </thead>
+			   <tbody>
+			      <tr th:each="question, op : ${allQuestion}">
+			        <td th:text="${op.index + 1}"></td>
+			        <td th:text="${'10 / ' + question.score}"></td>
+			        <td th:text="${question.catagory}"></td>
+			        <td th:text="${question.ldt}"></td>
+			        <td>
+			        <a th:href="@{/user/delete/{id}(id=${question.id})}">Delete</a>
+			        </td>
+			      </tr>
+			   </tbody>
+			</table>
+		</div>
+	</section>
+</body>
+</html>
+
+
+
+
+
+

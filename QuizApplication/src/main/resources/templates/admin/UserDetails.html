@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{admin/base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<br>
+		<h3 class="text-center">User Details</h3>
+
+		<br>
+		
+		<div class="d-flex justify-content-center">
+			<form method="get" action="/admin/UserDetails">
+				<input type="text" name="searchTerm" th:value="${searchTerm}">
+				<button type="submit" class="btn btn-dark opacity-75">Search</button>
+			</form>
+		</div>
+		<br><br>
+		<div class="container">
+			<div class="row">
+				<table class="table table-bordered text-center">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Phone No</th>
+							<th>Email Address</th>
+							<th>Gender</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="user,op : ${userDetails}">
+							<td th:text="${op.index + 1}"></td>
+							<td th:text="${user.name}"></td>
+							<td th:text="${user.phoneno}"></td>
+							<td th:text="${user.email}"></td>
+							<td th:text="${user.gender}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>

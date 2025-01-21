@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{admin/base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<h1 style="color: rgb(128, 128, 255); text-align: center">Admin Page</h1>
+
+		<div class="row">
+			<div class="card"
+				style="width: 20rem; margin-left: 6rem; margin-top: 3rem">
+				<div class="card-body">
+					<h5 class="card-title">All Quiz Questions</h5>
+					<p class="card-text">Admin can view all questions, edit their
+						details, update options, correct answers, and categories directly
+						from Filter Chain.</p>
+					<a href="/admin/showQuestionJava" class="card-link">Click Here</a>
+				</div>
+			</div>
+		</div>
+		<br><br><br><br><br> &nbsp;
+	</section>
+</body>
+</html>

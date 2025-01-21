@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<br>
+		<div class="container p-5 test-center">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="card">
+						<div class="card-header text-center fs-4">Log in to Quizzica</div>
+						<div class="card-body">
+							<div th:if="${add}">
+								<h3 class="text-success text-center fs-5" th:text="${add}"></h3>
+							</div>
+							<div th:if="${param.error}">
+							    <h3 class="text-danger text-center fs-5">Invalid username and password</h3>
+							</div>
+							<form th:action="@{/signin}" th:object="${user}" method="post">
+								<div class="mb-3">
+									<label>Enter Email</label> <input type="email" name="username"
+										class="form-control" required>
+								</div>
+								<div class="mb-3">
+									<label>Enter Password</label> <input type="password"
+										th:field="*{password}" class="form-control" required>
+								</div>
+								<button class="btn btn-dark opacity-75 col-md-12">Login</button>
+							</form>
+							<div class="text-center mt-3">
+								<a th:href="@{/forget-password}">Click here forget password?</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+									th:href=@{/register}>Register for Quizzica?</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
