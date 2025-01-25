@@ -159,8 +159,8 @@ public class AdminController {
 			userDetails = userDetails.stream().filter(user -> user.getName().toLowerCase().contains(searchTermLower)
 					|| String.valueOf(user.getPhoneno()).contains(searchTermLower) || // Convert phone number to String
 					user.getGender().toLowerCase().contains(searchTermLower)
-					|| user.getEmail().toLowerCase().contains(searchTermLower)).collect(Collectors.toList());
-		}
+					|| user.getEmail().toLowerCase().contains(searchTermLower)).toList();
+			}
 		map.put("userDetails", userDetails);
 		map.put("searchTerm", searchTerm);
 		return "admin/UserDetails";

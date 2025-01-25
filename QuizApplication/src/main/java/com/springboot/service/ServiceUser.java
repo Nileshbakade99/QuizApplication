@@ -66,7 +66,7 @@ public class ServiceUser implements IServiceUser {
 
 			content = content.replace("[[name]]", user.getName());
 
-			String siteUrl = "http://localhost:8080" + "/verify?code=" + user.getVerificationCode();
+			String siteUrl = "http://localhost:4041" + "/verify?code=" + user.getVerificationCode();
 			content = content.replace("[[URL]]", siteUrl);
 
 			helper.setText(content, true);
@@ -153,7 +153,7 @@ public class ServiceUser implements IServiceUser {
 
 			content = content.replace("[[name]]", user.getName());
 
-			String siteUrl = "http://localhost:8080" + "/reset-password?token=" + user.getPasswordResetToken();
+			String siteUrl = "http://localhost:4041" + "/reset-password?token=" + user.getPasswordResetToken();
 
 			content = content.replace("[[URL]]", siteUrl);
 
